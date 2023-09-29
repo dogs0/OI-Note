@@ -1,9 +1,9 @@
 # NOI-CSPJ
 //先写一些简单地宏定义(应该没人不会CPP吧)  
 ```c++
-\#define ll long long  
-\#define max(a,b) a\>b? a:b  
-\#define min(a,b) a\<b? a:b
+#define ll long long  
+#define max(a,b) a>b? a:b  
+#define min(a,b) a<b? a:b
 ```
 ## 关于计算机  
 \-\-|图灵提出的图灵机模型  
