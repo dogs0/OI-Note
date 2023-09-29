@@ -139,10 +139,10 @@ int main(){
 
 #### 常用宏
 ```c++
-#define max(a,b) a\>b? a:b
-#define min(a,b) a\<b? a:b
-#define abs(a) a\<0? -a:a
-#define round(a) a\>=((int)a+0.5) ((int)a+1):((int)a)
+#define max(a,b) a>b? a:b
+#define min(a,b) a<b? a:b
+#define abs(a) a<0? -a:a
+#define round(a) a>=((int)a+0.5) ((int)a+1):((int)a)
 #define ceil(a) a>(int)a? (int)a+1:(int)a
 #define floor(a) (int)a
 ```
