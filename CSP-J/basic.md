@@ -42,6 +42,44 @@ switch-case-default
 |char|B|不会请退|
 |bool|B|是1B!!!|
 
+#### 数据声明
+```C++
+<类型> 名称;  //一般类型声明
+<类型> *名称 = new <类型>;  //一般指针声明
+<类型> *名称 = new <类型>[大小];  //一般指针数组声明(可以定义大小但比同等大小的数组大一些
+<类型> 名称[大小(const!)];  //一般一维数组声明
+```
+
+#### struct和union
+struct是一个结构体
+大小为所有的成员大小和
+union为联合体(共用内存)
+大小为最大的成员大小
+operator是重载符号用的
+不占用空间
+语法:
+<返回类型> operator <符号> (参数){};
+
+```C++
+struct A{  //一个名为A的类型
+  int a;  //成员a
+  A(){};  //一个特殊的构造函数
+  A(int k){};  //有整数参数的构造函数
+  int operator + (int m) {return m+a;};
+}K,L(1);
+
+union B{
+  float k,l;  //成员k,l和a共用内存
+  int a;
+}M; 
+int main(){
+  K.a=0;  //赋值
+  M.k=1.14;
+  if (M.k==M.l) return 0;
+  return 1;
+}
+```
+以上程序的返回值为0
 ### 输入输出
 #### cin/cout
 ~个人感觉不如printf~  
@@ -107,3 +145,4 @@ int main(){
 #define round(a) a\>=((int)a+0.5) ((int)a+1):((int)a)
 #define ceil(a) a>(int)a? (int)a+1:(int)a
 #define floor(a) (int)a
+```
