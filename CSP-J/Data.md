@@ -28,6 +28,7 @@ struct Stack{
   int *x,maxsize=-1,cnt=0;
   Stack(){
     x=new int[114];
+    maxsize=114;
   }
   Stack(int size){
     x=new int[size];
@@ -40,6 +41,7 @@ struct Stack{
     if (cnt<maxsize) x[cnt++]=s;
   }
   int pop(){
+    if (cnt>0)
     return x[--cnt];
   }
 }
