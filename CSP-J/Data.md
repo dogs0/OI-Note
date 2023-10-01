@@ -298,11 +298,97 @@ WPL是带权路径长,
 有:  
 $WPL = \Sigma^{n}_ {i = 1} W_{i}L_{i}$  
 而哈夫曼编码就是找到一颗WPL最小的树  
+哈夫曼树不唯一  
 方法:
 将值{ $a_1,a_2,a_3,a_4,...,a_n$ }转为带权森林{ $T_1,T_2,T_3,T_4,...,T_n$ }  
 将最小的两个组合到一起,形成一颗新的树,根的权值为两个子的权值和  
 重复  
+实践:  
+```mermaid
+graph TB
+A((1))
+B((2))
+C((3))
+D((4))
+E((5))
+```
+首先,最小的是1,2  
+就有了  
+```mermaid
+graph TB
+A((1))
+B((2))
+
+AB(3)
+C((3))
+D((4))
+E((5))
+AB-->A
+AB-->B
+```
+又有此时最小为3,3  
+有  
+```mermaid
+graph TB
+A((1))
+B((2))
+AB(3)
+C((3))
+
+ABC(6)
+D((4))
+E((5))
+AB-->A
+AB-->B
+ABC-->AB
+ABC-->C
+```
+以此类推
+```mermaid
+graph TB
+A((1))
+B((2))
+AB(3)
+C((3))
+D((4))
+E((5))
+
+ABC(6)
+DE(9)
+
+AB-->A
+AB-->B
+ABC-->AB
+ABC-->C
+DE-->D
+DE-->E
+```
+
+```mermaid
+graph TB
+A((1))
+B((2))
+AB(3)
+C((3))
+D((4))
+E((5))
+ABC(6)
+DE(9)
+
+ABCDE(15)
+
+AB-->A
+AB-->B
+ABC-->AB
+ABC-->C
+DE-->D
+DE-->E
+ABCDE-->ABC
+ABCDE-->DE
+```
+
 ```C++
+graph TB
 struct Tree{
 	int w;
 	int cnt;
