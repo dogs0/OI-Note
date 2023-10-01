@@ -417,7 +417,6 @@ int huffman(int *a,int size){		//返回根
 		HTree[cnt].cnt=cnt;
 		HTree[cnt].r=x.cnt;
 		HTree[cnt].l=b.cnt;
-		//printf("%d %d %d %d\n",HTree[cnt].w,HTree[cnt].cnt,HTree[cnt].l,HTree[cnt].r);
 		q.push(HTree[cnt++]);
 	}
 	return cnt-1;
@@ -464,4 +463,99 @@ void insert(int x){
 		};
 	}
 }
+//还有查找删除遍历的坑没填233	
 ```
+
+## 简单图(WC怎么到图论前置了)
+J要知道的:  
+图是由一堆点和边组成的  
+有`G=(V,E)`  
+其中G表示图,V为点集,E为边集  
+
+有向图:有方向的图
+```mermaid
+graph LR
+A(A)
+B(B)
+C(C)
+D(D)
+E(E)
+A==>B
+B==>C
+D==>C
+E==>D
+```
+无向图:没方向的图
+```mermaid
+graph LR
+A(A)
+B(B)
+C(C)
+D(D)
+E(E)
+A===B
+B===C
+D===C
+E===D
+```
+环:
+```mermaid
+graph LR
+A(A)
+B(B)
+C(C)
+D(A)
+E(B)
+F(C)
+A==>B
+B==>C
+C==>A
+D===E
+E===F
+F===D
+```
+有n个点的简单无向完全图有 $\Sigma^{n}_{i=1} (n-i) = \frac{n(n-1)}{2}$ 条边  
+简单有向图由于两个点间最多有2条边  
+所以就有 $n(n-1)$ 条边  
+储存方式:  
+邻接矩阵  
+对于图
+```mermaid
+graph LR
+A(A)
+B(B)
+C(C)
+D(D)
+A==>B
+A==>C
+C==>B
+B==>D
+```
+用邻接矩阵表示为:
+```C++
+{// from A B C D
+	 0,0,0,0, //A
+	 1,0,1,0, //B
+	 1,0,0,0, //C
+	 0,1,0,0  //D
+}
+```
+
+邻接表:  
+就是对于每个点,储存它的内容和边的关系  
+```C++
+struct Node{
+	int data;
+	vector<int>next;
+}Nodes[MAXN];
+int cnt=0;
+void adde(int a,int b){ 		//a-->b
+	Nodes[a].next.push_back(b);
+}
+int addv(int a){
+	Nodes[cnt].data=a;
+	return cnt++;
+}
+```
+
+***~数据结构就到这了,再有也不讲了~***
