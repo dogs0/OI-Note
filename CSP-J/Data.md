@@ -430,4 +430,38 @@ int huffman(int *a,int size){		//返回根
 有:
 $L < F < R$
 搜索时只要:当x小于父去左子,大于去右子  
-
+```C++
+struct Tree{
+	int w;
+	int l=-1,r=-1;
+}Trees[114514];
+int cnt=0;
+void insert(int x){
+	if (cnt==0){
+		Trees[0].w=x;
+		cnt++;
+	}
+	else{
+		Tree *now=&Trees[0];
+		while (true){
+			if (x>now->w)
+			if (now->r==-1){
+				now->r=cnt;
+				Trees[ cnt++ ].w=x;
+				return;
+			}else{
+				now=&Trees[now->r];
+			}
+			else if(x<now->w)
+			if (now->l==-1){
+				now->l=cnt;
+				Trees[cnt++].w=x;
+				return;
+			}else{
+				now=&Trees[now->l];
+			}
+			if (x==now->w) return;
+		};
+	}
+}
+```
