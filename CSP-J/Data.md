@@ -302,6 +302,42 @@ $WPL = \Sigma^{n}_ {i = 1} W_{i}L_{i}$
 将值{ $a_1,a_2,a_3,a_4,...,a_n$ }转为带权森林{ $T_1,T_2,T_3,T_4,...,T_n$ }  
 将最小的两个组合到一起,形成一颗新的树,根的权值为两个子的权值和  
 重复  
+```C++
+struct Tree{
+	int w;
+	int cnt;
+	int l,r;
+}HTree[114514];
+bool operator < (Tree a,Tree b){
+	return a.w>b.w;
+}
+int cnt=0;
+int huffman(int *a,int size){		//返回根
+	priority_queue<Tree> q;
+	for (int i=0;i<size;i++){
+		HTree[cnt].w=a[i];
+		HTree[cnt].cnt=cnt;
+		HTree[cnt].l=HTree[cnt].r=-1;
+		q.push(HTree[cnt++]);
+	}
+	Tree x;
+	Tree b;
+	while (q.size()>1){
+		x=q.top();
+		q.pop();
+		b=q.top();
+		q.pop();
+		HTree[cnt].w=x.w+b.w;
+		HTree[cnt].cnt=cnt;
+		HTree[cnt].r=x.cnt;
+		HTree[cnt].l=b.cnt;
+		//printf("%d %d %d %d\n",HTree[cnt].w,HTree[cnt].cnt,HTree[cnt].l,HTree[cnt].r);
+		q.push(HTree[cnt++]);
+	}
+	return cnt-1;
+}
+
+```
 
 #### 二叉搜索
 对于一个父节点的左子和右子,设:根为F,左右子为:L,R  
